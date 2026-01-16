@@ -1,0 +1,27 @@
+{
+  "success": {
+    "data": {
+      "id": 10000103,
+      "name": "Luis Fernando",
+      "email": "firu@gmail.com"
+    },
+    "message": "Updated",
+    "timestamp": "2026-01-16T16:30:30",
+    "status": 200
+  },
+  "error_409": {
+    "data": null,
+    "message": "Data conflict: Email already in use",
+    "status": 409
+  },
+  "error_400": {
+    "data": { "email": "Invalid format" },
+    "message": "Validation error",
+    "status": 400
+  },
+  "error_404": {
+    "data": null,
+    "message": "User not found",
+    "status": 404
+  }
+}

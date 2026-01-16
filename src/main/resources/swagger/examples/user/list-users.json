@@ -1,0 +1,86 @@
+{
+  "success": {
+    "data": {
+      "content": [
+        {
+          "id": 102,
+          "name": "Usuario Prueba 1",
+          "email": "usuario1@test.com"
+        },
+        {
+          "id": 103,
+          "name": "Usuario Prueba 2",
+          "email": "usuario2@test.com"
+        },
+        {
+          "id": 104,
+          "name": "Usuario Prueba 3",
+          "email": "usuario3@test.com"
+        },
+        {
+          "id": 105,
+          "name": "Usuario Prueba 4",
+          "email": "usuario4@test.com"
+        },
+        {
+          "id": 106,
+          "name": "Usuario Prueba 5",
+          "email": "usuario5@test.com"
+        },
+        {
+          "id": 107,
+          "name": "Usuario Prueba 6",
+          "email": "usuario6@test.com"
+        },
+        {
+          "id": 108,
+          "name": "Usuario Prueba 7",
+          "email": "usuario7@test.com"
+        },
+        {
+          "id": 109,
+          "name": "Usuario Prueba 8",
+          "email": "usuario8@test.com"
+        },
+        {
+          "id": 110,
+          "name": "Usuario Prueba 9",
+          "email": "usuario9@test.com"
+        },
+        {
+          "id": 111,
+          "name": "Usuario Prueba 10",
+          "email": "usuario10@test.com"
+        }
+      ],
+      "pageable": {
+        "pageNumber": 0,
+        "pageSize": 10,
+        "sort": {
+          "empty": true,
+          "sorted": false,
+          "unsorted": true
+        },
+        "offset": 0,
+        "paged": true,
+        "unpaged": false
+      },
+      "totalElements": 10000002,
+      "totalPages": 1000001,
+      "last": false,
+      "size": 10,
+      "number": 0,
+      "sort": {
+        "empty": true,
+        "sorted": false,
+        "unsorted": true
+      },
+      "first": true,
+      "numberOfElements": 10,
+      "empty": false
+    },
+    "message": "List retrieved",
+    "timestamp": "2026-01-16T17:15:04.386493625",
+    "status": 200
+  }
+}

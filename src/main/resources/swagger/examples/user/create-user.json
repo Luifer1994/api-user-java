@@ -1,0 +1,27 @@
+{
+  "success": {
+    "data": {
+      "id": 10000103,
+      "name": "Luis Fernando",
+      "email": "firu@gmail.com"
+    },
+    "message": "Created",
+    "timestamp": "2026-01-16T16:29:30",
+    "status": 201
+  },
+  "error_400": {
+    "data": {
+      "name": "The name is mandatory",
+      "email": "The email is mandatory"
+    },
+    "message": "Validation error",
+    "timestamp": "2026-01-16T16:29:53",
+    "status": 400
+  },
+  "error_409": {
+    "data": null,
+    "message": "Data conflict: The email is already in use by another user",
+    "timestamp": "2026-01-16T16:30:17",
+    "status": 409
+  }
+}

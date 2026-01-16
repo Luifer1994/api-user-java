@@ -1,0 +1,23 @@
+= Documentación de API Users
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toc-title: Tabla de Contenidos
+
+== Introducción
+Esta es la documentación generada automáticamente desde los tests.
+
+== Usuarios
+
+=== Obtener un Usuario por ID
+Aquí mostramos cómo obtener los detalles de un usuario específico.
+
+.Petición (Request)
+include::{snippets}/user-get-by-id/http-request.adoc[]
+
+.Respuesta (Response)
+include::{snippets}/user-get-by-id/http-response.adoc[]
+
+.Campos de la Respuesta
+include::{snippets}/user-get-by-id/response-fields.adoc[]
