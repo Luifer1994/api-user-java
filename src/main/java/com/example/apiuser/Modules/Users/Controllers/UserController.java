@@ -47,8 +47,13 @@ public class UserController {
 
     @DocsGetUserById
     @GetMapping("/{id}")
-    public ResponseEntity<Object> getUserById(@PathVariable UUID id) {
-        return HttpResponse.send("Found", HttpStatus.OK, this.findUserByIdService.execute(id));
+    public ResponseEntity<Object> getUserById(@PathVariable String id) {
+        try {
+            UUID uuid = UUID.fromString(id);
+            return HttpResponse.send("Found", HttpStatus.OK, this.findUserByIdService.execute(uuid));
+        } catch (IllegalArgumentException e) {
+            throw new com.example.apiuser.Exceptions.ResourceNotFoundException("user.not.found");
+        }
     }
 
     @DocsDeleteUser

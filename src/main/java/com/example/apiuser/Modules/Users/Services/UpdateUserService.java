@@ -21,12 +21,12 @@ public class UpdateUserService {
     public UserResponseDTO execute(UserRequestDTO request, UUID id) { // UUID
 
         User existingUser = this.userRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("User not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("user.not.found"));
 
         // Verificación de email duplicado usando UUID
         if (!request.getEmail().equals(existingUser.getEmail()) &&
                 this.userRepository.existsByEmailAndIdNot(request.getEmail(), id)) {
-            throw new DataIntegrityViolationException("The email is already in use by another user");
+            throw new DataIntegrityViolationException("user.email.already");
         }
 
         existingUser.setName(request.getName());

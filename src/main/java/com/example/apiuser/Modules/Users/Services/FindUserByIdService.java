@@ -18,6 +18,6 @@ public class FindUserByIdService {
     public UserResponseDTO execute(UUID id) {
         return this.userRepository.findById(id)
                 .map(UserResponseDTO::fromEntity)
-                .orElseThrow(() -> new ResourceNotFoundException("User not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("user.not.found"));
     }
 }

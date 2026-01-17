@@ -16,10 +16,8 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class CreateUserService {
     private final UserRepository userRepository;
-    private final RestTemplate restTemplate = new RestTemplate();
-
-    @Value("${URI_AUTH:http://ms-auth:8081}")
-    private String authServiceUrl;
+    private final RestTemplate restTemplate;
+    private final com.example.apiuser.Utils.ServiceUrlResolver serviceUrlResolver;
 
     @Transactional
     public UserResponseDTO execute(UserRequestDTO request) {
@@ -28,7 +26,9 @@ public class CreateUserService {
         var savedUser = this.userRepository.save(newUser);
 
         // Call api-auth to create credentials
-        String registerUrl = authServiceUrl + "/auth/register-internal";
+        // Resolves "auth" -> URI_AUTH and appends "/auth/register-internal"
+        String registerUrl = serviceUrlResolver.resolve("auth/register-internal");
+
         Map<String, Object> registerRequest = new HashMap<>();
         registerRequest.put("userId", savedUser.getId());
         registerRequest.put("email", savedUser.getEmail());

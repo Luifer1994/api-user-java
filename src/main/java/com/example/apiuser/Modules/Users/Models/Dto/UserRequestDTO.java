@@ -16,18 +16,18 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class UserRequestDTO {
 
-        @NotBlank(message = "The name is mandatory", groups = { ValidationGroups.OnCreate.class,
+        @NotBlank(message = "{user.name.empty}", groups = { ValidationGroups.OnCreate.class,
                         ValidationGroups.OnUpdate.class })
         private String name;
 
-        @NotBlank(message = "The password is mandatory", groups = { ValidationGroups.OnCreate.class })
+        @NotBlank(message = "{user.password.empty}", groups = { ValidationGroups.OnCreate.class })
         private String password;
 
-        @NotBlank(message = "The email is mandatory", groups = { ValidationGroups.OnCreate.class,
+        @NotBlank(message = "{user.email.empty}", groups = { ValidationGroups.OnCreate.class,
                         ValidationGroups.OnUpdate.class })
-        @Email(message = "Invalid email format", groups = { ValidationGroups.OnCreate.class,
+        @Email(message = "{user.email.invalid}", groups = { ValidationGroups.OnCreate.class,
                         ValidationGroups.OnUpdate.class })
-        @UniqueValue(entityClass = User.class, field = "email", message = "The email is already in use", groups = ValidationGroups.OnCreate.class)
+        @UniqueValue(entityClass = User.class, field = "email", message = "{user.email.already}", groups = ValidationGroups.OnCreate.class)
         private String email;
 
         public User toEntity() {
