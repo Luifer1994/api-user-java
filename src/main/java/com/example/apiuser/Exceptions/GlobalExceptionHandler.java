@@ -36,7 +36,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public ResponseEntity<Object> handleJsonError(HttpMessageNotReadableException ex) {
         log.error("Malformed JSON: {}", ex.getMessage());
-        return HttpResponse.send("JSON format error. Please check data types.", HttpStatus.BAD_REQUEST);
+        return HttpResponse.send("JSON format error. Please check data types.", HttpStatus.UNPROCESSABLE_ENTITY);
     }
 
     @ExceptionHandler(DataIntegrityViolationException.class)
@@ -51,7 +51,7 @@ public class GlobalExceptionHandler {
         ex.getBindingResult().getFieldErrors().forEach(error -> {
             errors.put(error.getField(), error.getDefaultMessage());
         });
-        return HttpResponse.send("Validation error", HttpStatus.BAD_REQUEST, errors);
+        return HttpResponse.send("Validation error", HttpStatus.UNPROCESSABLE_ENTITY, errors);
     }
 
     @ExceptionHandler(AccessDeniedException.class)
