@@ -15,6 +15,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import java.util.UUID;
 
 @RestController
@@ -28,12 +30,17 @@ public class UserController {
     private final FindUserByIdService findUserByIdService;
     private final DeleteUserByIdService deleteUserByIdService;
     private final UpdateUserService updateUserService;
+    private final MessageSource messageSource;
+
+    private String getMessage(String key) {
+        return messageSource.getMessage(key, null, LocaleContextHolder.getLocale());
+    }
 
     @DocsCreateUser
     @PostMapping
     public ResponseEntity<Object> createUser(
             @RequestBody @Validated(ValidationGroups.OnCreate.class) UserRequestDTO user) {
-        return HttpResponse.send("Created", HttpStatus.CREATED, this.createUserService.execute(user));
+        return HttpResponse.send(getMessage("user.created"), HttpStatus.CREATED, this.createUserService.execute(user));
     }
 
     @DocsListUsers
@@ -41,7 +48,7 @@ public class UserController {
     public ResponseEntity<Object> getAllUsers(
             @Parameter(hidden = false, required = false) UserFilter filter,
             @PageableDefault(page = 0, size = 10) @Parameter(description = "Paginación") Pageable pageable) {
-        return HttpResponse.send("List retrieved", HttpStatus.OK,
+        return HttpResponse.send(getMessage("user.list.retrieved"), HttpStatus.OK,
                 this.getAllUsersService.execute(filter, pageable));
     }
 
@@ -50,7 +57,8 @@ public class UserController {
     public ResponseEntity<Object> getUserById(@PathVariable String id) {
         try {
             UUID uuid = UUID.fromString(id);
-            return HttpResponse.send("Found", HttpStatus.OK, this.findUserByIdService.execute(uuid));
+            return HttpResponse.send(getMessage("user.retrieved"), HttpStatus.OK,
+                    this.findUserByIdService.execute(uuid));
         } catch (IllegalArgumentException e) {
             throw new com.example.apiuser.Exceptions.ResourceNotFoundException("user.not.found");
         }
@@ -60,7 +68,7 @@ public class UserController {
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> deleteUserById(@PathVariable UUID id) {
         this.deleteUserByIdService.execute(id);
-        return HttpResponse.send("Deleted", HttpStatus.NO_CONTENT);
+        return HttpResponse.send(getMessage("user.deleted"), HttpStatus.NO_CONTENT);
     }
 
     @DocsUpdateUser
@@ -68,6 +76,6 @@ public class UserController {
     public ResponseEntity<Object> updateUser(
             @RequestBody @Validated(ValidationGroups.OnUpdate.class) UserRequestDTO user,
             @PathVariable UUID id) {
-        return HttpResponse.send("Updated", HttpStatus.OK, this.updateUserService.execute(user, id));
+        return HttpResponse.send(getMessage("user.updated"), HttpStatus.OK, this.updateUserService.execute(user, id));
     }
 }

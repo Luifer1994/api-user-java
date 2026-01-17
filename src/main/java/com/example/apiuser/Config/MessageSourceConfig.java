@@ -38,7 +38,6 @@ public class MessageSourceConfig {
 
                     if (!basenames.contains(basename)) {
                         basenames.add(basename);
-                        System.out.println("Loaded message bundle: " + basename);
                     }
                 }
             }

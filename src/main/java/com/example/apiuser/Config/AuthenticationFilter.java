@@ -11,6 +11,7 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.context.MessageSource;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -25,11 +26,17 @@ public class AuthenticationFilter extends OncePerRequestFilter {
 
     private final SecretKey KEY = Keys.hmacShaKeyFor(
             "ESTA_ES_UNA_LLAVE_MUY_SECRETA_Y_LARGA_PARA_SEGURIDAD_123456".getBytes(StandardCharsets.UTF_8));
-    
+
     // Configurado para que el timestamp no sea un array de números
     private final ObjectMapper mapper = new ObjectMapper()
             .registerModule(new JavaTimeModule())
             .configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
+
+    private final MessageSource messageSource;
+
+    public AuthenticationFilter(MessageSource messageSource) {
+        this.messageSource = messageSource;
+    }
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
@@ -49,7 +56,7 @@ public class AuthenticationFilter extends OncePerRequestFilter {
                 }
             } catch (Exception e) {
                 SecurityContextHolder.clearContext();
-                sendErrorResponse(response, "Invalid or expired token", HttpStatus.UNAUTHORIZED);
+                sendErrorResponse(response, request, "security.token.invalid", HttpStatus.UNAUTHORIZED);
                 return;
             }
         }
@@ -57,14 +64,18 @@ public class AuthenticationFilter extends OncePerRequestFilter {
         // Bloqueo manual para rutas protegidas sin auth (acceso directo puerto 8082)
         if (request.getRequestURI().startsWith("/users")
                 && SecurityContextHolder.getContext().getAuthentication() == null) {
-            sendErrorResponse(response, "Full authentication is required", HttpStatus.UNAUTHORIZED);
+            sendErrorResponse(response, request, "security.auth.required", HttpStatus.UNAUTHORIZED);
             return;
         }
 
         filterChain.doFilter(request, response);
     }
 
-    private void sendErrorResponse(HttpServletResponse response, String message, HttpStatus status) throws IOException {
+    private void sendErrorResponse(HttpServletResponse response, HttpServletRequest request, String key,
+            HttpStatus status) throws IOException {
+        java.util.Locale locale = request.getLocale();
+        String message = messageSource.getMessage(key, null, key, locale);
+
         var entity = HttpResponse.send(message, status);
         response.setStatus(status.value());
         response.setContentType("application/json");
