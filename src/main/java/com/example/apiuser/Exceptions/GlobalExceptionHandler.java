@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.NoHandlerFoundException;
 import org.springframework.web.servlet.resource.NoResourceFoundException;
 
+import org.springframework.security.access.AccessDeniedException;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -25,7 +27,7 @@ public class GlobalExceptionHandler {
         return HttpResponse.send(ex.getMessage(), HttpStatus.NOT_FOUND);
     }
 
-    @ExceptionHandler({NoHandlerFoundException.class, NoResourceFoundException.class})
+    @ExceptionHandler({ NoHandlerFoundException.class, NoResourceFoundException.class })
     public ResponseEntity<Object> handleNotFound(Exception ex) {
         log.warn("Route not found: {}", ex.getMessage());
         return HttpResponse.send("The requested route does not exist.", HttpStatus.NOT_FOUND);
@@ -39,7 +41,6 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(DataIntegrityViolationException.class)
     public ResponseEntity<Object> handleDbConflict(DataIntegrityViolationException ex) {
-        // Use getMostSpecificCause() to see the actual SQL error details in logs
         log.warn("DB Conflict: {}", ex.getMostSpecificCause().getMessage());
         return HttpResponse.send("Data conflict: " + ex.getMostSpecificCause().getMessage(), HttpStatus.CONFLICT);
     }
@@ -53,9 +54,16 @@ public class GlobalExceptionHandler {
         return HttpResponse.send("Validation error", HttpStatus.BAD_REQUEST, errors);
     }
 
+    @ExceptionHandler(AccessDeniedException.class)
+    public ResponseEntity<Object> handleAccessDenied(AccessDeniedException ex) {
+        log.warn("Access denied: {}", ex.getMessage());
+        return HttpResponse.send("You do not have permission to access this resource", HttpStatus.FORBIDDEN);
+    }
+
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Object> handleGeneralException(Exception ex) {
-        log.error("Critical Error: {}", ex.getClass().getName(), ex);
-        return HttpResponse.send("Internal server error. Please contact the administrator.", HttpStatus.INTERNAL_SERVER_ERROR);
+        log.error("Critical Error: {} - {}", ex.getClass().getName(), ex.getMessage());
+        return HttpResponse.send("Internal server error. Please contact the administrator.",
+                HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }

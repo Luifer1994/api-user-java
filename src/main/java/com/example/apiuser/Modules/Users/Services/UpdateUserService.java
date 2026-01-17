@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -17,18 +18,21 @@ public class UpdateUserService {
     private final UserRepository userRepository;
 
     @Transactional
-    public UserResponseDTO execute(UserRequestDTO request, Long id) {
+    public UserResponseDTO execute(UserRequestDTO request, UUID id) { // UUID
 
-        User existingUser = this.userRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("User not found"));
+        User existingUser = this.userRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("User not found"));
 
-        if (!request.getEmail().equals(existingUser.getEmail()) && this.userRepository.existsByEmailAndIdNot(request.getEmail(), id))
+        // Verificación de email duplicado usando UUID
+        if (!request.getEmail().equals(existingUser.getEmail()) &&
+                this.userRepository.existsByEmailAndIdNot(request.getEmail(), id)) {
             throw new DataIntegrityViolationException("The email is already in use by another user");
+        }
 
         existingUser.setName(request.getName());
         existingUser.setEmail(request.getEmail());
 
         User updatedUser = this.userRepository.save(existingUser);
-
         return UserResponseDTO.fromEntity(updatedUser);
     }
 }

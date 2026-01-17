@@ -1,15 +1,15 @@
 {
-  "success": {
+  "get-user-by-id-success": {
     "data": {
-      "id": 1000000,
-      "name": "Usuario Prueba 999899",
-      "email": "usuario999899@test.com"
+      "id": "550e8400-e29b-41d4-a716-446655440000",
+      "name": "Usuario Prueba UUID",
+      "email": "usuario.uuid@test.com"
     },
     "message": "Found",
     "timestamp": "2026-01-16T16:24:34",
     "status": 200
   },
-  "error_404": {
+  "get-user-by-id-error-404": {
     "data": null,
     "message": "User not found",
     "timestamp": "2026-01-16T16:29:53",

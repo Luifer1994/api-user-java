@@ -1,7 +1,7 @@
 {
-  "success": {
+  "create-user-success": {
     "data": {
-      "id": 10000103,
+      "id": "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11",
       "name": "Luis Fernando",
       "email": "firu@gmail.com"
     },
@@ -9,7 +9,7 @@
     "timestamp": "2026-01-16T16:29:30",
     "status": 201
   },
-  "error_400": {
+  "create-user-error-400": {
     "data": {
       "name": "The name is mandatory",
       "email": "The email is mandatory"
@@ -18,7 +18,7 @@
     "timestamp": "2026-01-16T16:29:53",
     "status": 400
   },
-  "error_409": {
+  "create-user-error-409": {
     "data": null,
     "message": "Data conflict: The email is already in use by another user",
     "timestamp": "2026-01-16T16:30:17",

@@ -1,25 +1,25 @@
 {
-  "success": {
+  "update-user-success": {
     "data": {
-      "id": 10000103,
-      "name": "Luis Fernando",
-      "email": "firu@gmail.com"
+      "id": "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11",
+      "name": "Luis Fernando Editado",
+      "email": "firu.editado@gmail.com"
     },
     "message": "Updated",
     "timestamp": "2026-01-16T16:30:30",
     "status": 200
   },
-  "error_409": {
+  "update-user-error-409": {
     "data": null,
     "message": "Data conflict: Email already in use",
     "status": 409
   },
-  "error_400": {
+  "update-user-error-400": {
     "data": { "email": "Invalid format" },
     "message": "Validation error",
     "status": 400
   },
-  "error_404": {
+  "update-user-error-404": {
     "data": null,
     "message": "User not found",
     "status": 404

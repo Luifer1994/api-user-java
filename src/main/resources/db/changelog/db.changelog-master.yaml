@@ -1,4 +1,4 @@
 databaseChangeLog:
-  - preConditions:
-      - runningAs:
-          username: postgres
+  - include:
+      file: changes/001-create-users-schema.sql
+      relativeToChangelogFile: true

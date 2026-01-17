@@ -1,56 +1,21 @@
 {
-  "success": {
+  "list-users-success": {
     "data": {
       "content": [
         {
-          "id": 102,
+          "id": "c56a4180-65aa-42ec-a945-5fd21dec0538",
           "name": "Usuario Prueba 1",
           "email": "usuario1@test.com"
         },
         {
-          "id": 103,
-          "name": "Usuario Prueba 2",
-          "email": "usuario2@test.com"
+          "id": "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11",
+          "name": "Super Admin",
+          "email": "admin@saas.com"
         },
         {
-          "id": 104,
+          "id": "7b34d284-9321-4f15-b5f7-9a4f65f72a12",
           "name": "Usuario Prueba 3",
           "email": "usuario3@test.com"
-        },
-        {
-          "id": 105,
-          "name": "Usuario Prueba 4",
-          "email": "usuario4@test.com"
-        },
-        {
-          "id": 106,
-          "name": "Usuario Prueba 5",
-          "email": "usuario5@test.com"
-        },
-        {
-          "id": 107,
-          "name": "Usuario Prueba 6",
-          "email": "usuario6@test.com"
-        },
-        {
-          "id": 108,
-          "name": "Usuario Prueba 7",
-          "email": "usuario7@test.com"
-        },
-        {
-          "id": 109,
-          "name": "Usuario Prueba 8",
-          "email": "usuario8@test.com"
-        },
-        {
-          "id": 110,
-          "name": "Usuario Prueba 9",
-          "email": "usuario9@test.com"
-        },
-        {
-          "id": 111,
-          "name": "Usuario Prueba 10",
-          "email": "usuario10@test.com"
         }
       ],
       "pageable": {
@@ -65,9 +30,9 @@
         "paged": true,
         "unpaged": false
       },
-      "totalElements": 10000002,
-      "totalPages": 1000001,
-      "last": false,
+      "totalElements": 3,
+      "totalPages": 1,
+      "last": true,
       "size": 10,
       "number": 0,
       "sort": {
@@ -76,11 +41,11 @@
         "unsorted": true
       },
       "first": true,
-      "numberOfElements": 10,
+      "numberOfElements": 3,
       "empty": false
     },
     "message": "List retrieved",
-    "timestamp": "2026-01-16T17:15:04.386493625",
+    "timestamp": "2026-01-16T17:15:04.386",
     "status": 200
   }
 }

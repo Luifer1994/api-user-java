@@ -2,6 +2,7 @@ package com.example.apiuser.Modules.Users.Models;
 
 import jakarta.persistence.*;
 import lombok.*;
+import java.util.UUID;
 
 @Entity
 @Table(name = "users")
@@ -11,10 +12,8 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 public class User {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private UUID id;
 
     @Column(nullable = false, length = 100)
     private String name;

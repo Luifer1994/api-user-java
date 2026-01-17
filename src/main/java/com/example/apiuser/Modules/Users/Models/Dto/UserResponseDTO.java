@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import java.util.UUID;
 
 @Data
 @Builder
@@ -12,12 +13,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class UserResponseDTO {
 
-    private Long id;
+    private UUID id;
     private String name;
     private String email;
 
     public static UserResponseDTO fromEntity(User user) {
-        if (user == null) return null;
+        if (user == null)
+            return null;
         return UserResponseDTO.builder()
                 .id(user.getId())
                 .name(user.getName())
