@@ -15,10 +15,11 @@ import org.springframework.transaction.annotation.Transactional;
 public class GetAllUsersService {
 
     private final UserRepository userRepository;
+    private final com.example.apiuser.Modules.Users.Models.Dto.UserMapper userMapper;
 
     @Transactional(readOnly = true)
     public Page<UserResponseDTO> execute(UserFilter filter, Pageable pageable) {
         Page<User> resultPage = userRepository.findAll(filter.toSpecification(), pageable);
-        return resultPage.map(UserResponseDTO::fromEntity);
+        return resultPage.map(userMapper::toDTO);
     }
 }

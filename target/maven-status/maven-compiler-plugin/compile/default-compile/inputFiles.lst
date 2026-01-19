@@ -1,6 +1,8 @@
 /Users/luifer/Developer/MYS/CURSO-JAVA-REACT/CRUD-USER/api-user/src/main/java/com/example/apiuser/ApiUserApplication.java
 /Users/luifer/Developer/MYS/CURSO-JAVA-REACT/CRUD-USER/api-user/src/main/java/com/example/apiuser/Config/AuthenticationFilter.java
 /Users/luifer/Developer/MYS/CURSO-JAVA-REACT/CRUD-USER/api-user/src/main/java/com/example/apiuser/Config/DataSeeder.java
+/Users/luifer/Developer/MYS/CURSO-JAVA-REACT/CRUD-USER/api-user/src/main/java/com/example/apiuser/Config/MessageSourceConfig.java
+/Users/luifer/Developer/MYS/CURSO-JAVA-REACT/CRUD-USER/api-user/src/main/java/com/example/apiuser/Config/RestTemplateConfig.java
 /Users/luifer/Developer/MYS/CURSO-JAVA-REACT/CRUD-USER/api-user/src/main/java/com/example/apiuser/Config/SecurityConfig.java
 /Users/luifer/Developer/MYS/CURSO-JAVA-REACT/CRUD-USER/api-user/src/main/java/com/example/apiuser/Config/SwaggerAutoConfig.java
 /Users/luifer/Developer/MYS/CURSO-JAVA-REACT/CRUD-USER/api-user/src/main/java/com/example/apiuser/Exceptions/GlobalExceptionHandler.java
@@ -13,6 +15,7 @@
 /Users/luifer/Developer/MYS/CURSO-JAVA-REACT/CRUD-USER/api-user/src/main/java/com/example/apiuser/Modules/Users/Controllers/Docs/UserApiExamples.java
 /Users/luifer/Developer/MYS/CURSO-JAVA-REACT/CRUD-USER/api-user/src/main/java/com/example/apiuser/Modules/Users/Controllers/UserController.java
 /Users/luifer/Developer/MYS/CURSO-JAVA-REACT/CRUD-USER/api-user/src/main/java/com/example/apiuser/Modules/Users/Models/Dto/UserFilter.java
+/Users/luifer/Developer/MYS/CURSO-JAVA-REACT/CRUD-USER/api-user/src/main/java/com/example/apiuser/Modules/Users/Models/Dto/UserMapper.java
 /Users/luifer/Developer/MYS/CURSO-JAVA-REACT/CRUD-USER/api-user/src/main/java/com/example/apiuser/Modules/Users/Models/Dto/UserRequestDTO.java
 /Users/luifer/Developer/MYS/CURSO-JAVA-REACT/CRUD-USER/api-user/src/main/java/com/example/apiuser/Modules/Users/Models/Dto/UserResponseDTO.java
 /Users/luifer/Developer/MYS/CURSO-JAVA-REACT/CRUD-USER/api-user/src/main/java/com/example/apiuser/Modules/Users/Models/User.java
@@ -26,3 +29,4 @@
 /Users/luifer/Developer/MYS/CURSO-JAVA-REACT/CRUD-USER/api-user/src/main/java/com/example/apiuser/Rules/UniqueValue.java
 /Users/luifer/Developer/MYS/CURSO-JAVA-REACT/CRUD-USER/api-user/src/main/java/com/example/apiuser/Rules/ValidationGroups.java
 /Users/luifer/Developer/MYS/CURSO-JAVA-REACT/CRUD-USER/api-user/src/main/java/com/example/apiuser/Utils/HttpResponse.java
+/Users/luifer/Developer/MYS/CURSO-JAVA-REACT/CRUD-USER/api-user/src/main/java/com/example/apiuser/Utils/ServiceUrlResolver.java

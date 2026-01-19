@@ -16,9 +16,10 @@ import java.util.UUID;
 public class UpdateUserService {
 
     private final UserRepository userRepository;
+    private final com.example.apiuser.Modules.Users.Models.Dto.UserMapper userMapper;
 
     @Transactional
-    public UserResponseDTO execute(UserRequestDTO request, UUID id) { // UUID
+    public UserResponseDTO execute(UserRequestDTO request, UUID id) {
 
         User existingUser = this.userRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("user.not.found"));
@@ -33,6 +34,6 @@ public class UpdateUserService {
         existingUser.setEmail(request.getEmail());
 
         User updatedUser = this.userRepository.save(existingUser);
-        return UserResponseDTO.fromEntity(updatedUser);
+        return userMapper.toDTO(updatedUser);
     }
 }

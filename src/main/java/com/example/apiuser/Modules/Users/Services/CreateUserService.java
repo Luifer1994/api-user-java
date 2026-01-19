@@ -12,16 +12,19 @@ import org.springframework.beans.factory.annotation.Value;
 import java.util.HashMap;
 import java.util.Map;
 
+
 @Service
 @RequiredArgsConstructor
 public class CreateUserService {
     private final UserRepository userRepository;
     private final RestTemplate restTemplate;
     private final com.example.apiuser.Utils.ServiceUrlResolver serviceUrlResolver;
+    private final com.example.apiuser.Modules.Users.Models.Dto.UserMapper userMapper;
+    
 
     @Transactional
     public UserResponseDTO execute(UserRequestDTO request) {
-        var newUser = request.toEntity();
+        var newUser = userMapper.toEntity(request);
 
         var savedUser = this.userRepository.save(newUser);
 
@@ -41,6 +44,6 @@ public class CreateUserService {
             throw new RuntimeException("Failed to register credentials: " + e.getMessage());
         }
 
-        return UserResponseDTO.fromEntity(savedUser);
+        return userMapper.toDTO(savedUser);
     }
 }

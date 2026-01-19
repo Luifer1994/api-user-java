@@ -17,13 +17,5 @@ public class UserResponseDTO {
     private String name;
     private String email;
 
-    public static UserResponseDTO fromEntity(User user) {
-        if (user == null)
-            return null;
-        return UserResponseDTO.builder()
-                .id(user.getId())
-                .name(user.getName())
-                .email(user.getEmail())
-                .build();
-    }
+
 }

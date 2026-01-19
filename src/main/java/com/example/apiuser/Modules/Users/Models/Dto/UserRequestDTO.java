@@ -30,10 +30,5 @@ public class UserRequestDTO {
         @UniqueValue(entityClass = User.class, field = "email", message = "{user.email.already}", groups = ValidationGroups.OnCreate.class)
         private String email;
 
-        public User toEntity() {
-                return User.builder()
-                                .name(this.name)
-                                .email(this.email)
-                                .build();
-        }
+
 }

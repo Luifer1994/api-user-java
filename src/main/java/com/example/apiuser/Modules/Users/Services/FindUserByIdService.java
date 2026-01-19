@@ -13,11 +13,12 @@ import java.util.UUID;
 public class FindUserByIdService {
 
     private final UserRepository userRepository;
+    private final com.example.apiuser.Modules.Users.Models.Dto.UserMapper userMapper;
 
     @Transactional(readOnly = true)
     public UserResponseDTO execute(UUID id) {
         return this.userRepository.findById(id)
-                .map(UserResponseDTO::fromEntity)
+                .map(userMapper::toDTO)
                 .orElseThrow(() -> new ResourceNotFoundException("user.not.found"));
     }
 }
