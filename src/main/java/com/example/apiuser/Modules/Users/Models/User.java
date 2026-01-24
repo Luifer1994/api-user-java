@@ -2,7 +2,12 @@ package com.example.apiuser.Modules.Users.Models;
 
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
+
+import com.example.apiuser.Modules.Addresses.Models.Address;
 
 @Entity
 @Table(name = "users")
@@ -21,4 +26,8 @@ public class User {
 
     @Column(nullable = false, unique = true, length = 150)
     private String email;
+
+    @Builder.Default
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<Address> addresses = new ArrayList<>();
 }

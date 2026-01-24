@@ -10,12 +10,14 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.example.apiuser.Modules.Users.Models.Dto.UserMapper;
+
 @Service
 @RequiredArgsConstructor
 public class GetAllUsersService {
 
     private final UserRepository userRepository;
-    private final com.example.apiuser.Modules.Users.Models.Dto.UserMapper userMapper;
+    private final UserMapper userMapper;
 
     @Transactional(readOnly = true)
     public Page<UserResponseDTO> execute(UserFilter filter, Pageable pageable) {

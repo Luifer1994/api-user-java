@@ -8,12 +8,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.UUID;
 
+import com.example.apiuser.Modules.Users.Models.Dto.UserMapper;
+
 @Service
 @RequiredArgsConstructor
 public class FindUserByIdService {
 
     private final UserRepository userRepository;
-    private final com.example.apiuser.Modules.Users.Models.Dto.UserMapper userMapper;
+    private final UserMapper userMapper;
 
     @Transactional(readOnly = true)
     public UserResponseDTO execute(UUID id) {

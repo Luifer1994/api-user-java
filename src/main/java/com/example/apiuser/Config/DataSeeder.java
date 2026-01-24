@@ -16,12 +16,11 @@ public class DataSeeder implements CommandLineRunner {
     public static final UUID SUPER_ADMIN_ID = UUID.fromString("a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11");
 
     @Override
-    @Transactional
     public void run(String... args) {
         String adminEmail = "almendralesluifer@gmail.com";
 
-        // Usamos existsByEmail para evitar cargar la entidad antes de tiempo
-        if (!userRepository.existsByEmail(adminEmail)) {
+        // Check by ID instead of email, since ID is the primary key and hardcoded
+        if (!userRepository.existsById(SUPER_ADMIN_ID)) {
             User superAdmin = User.builder()
                     .id(SUPER_ADMIN_ID)
                     .name("Super Admin")

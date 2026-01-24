@@ -7,6 +7,10 @@
 /Users/luifer/Developer/MYS/CURSO-JAVA-REACT/CRUD-USER/api-user/src/main/java/com/example/apiuser/Config/SwaggerAutoConfig.java
 /Users/luifer/Developer/MYS/CURSO-JAVA-REACT/CRUD-USER/api-user/src/main/java/com/example/apiuser/Exceptions/GlobalExceptionHandler.java
 /Users/luifer/Developer/MYS/CURSO-JAVA-REACT/CRUD-USER/api-user/src/main/java/com/example/apiuser/Exceptions/ResourceNotFoundException.java
+/Users/luifer/Developer/MYS/CURSO-JAVA-REACT/CRUD-USER/api-user/src/main/java/com/example/apiuser/Modules/Addresses/Models/Address.java
+/Users/luifer/Developer/MYS/CURSO-JAVA-REACT/CRUD-USER/api-user/src/main/java/com/example/apiuser/Modules/Addresses/Models/Dto/AddressMapper.java
+/Users/luifer/Developer/MYS/CURSO-JAVA-REACT/CRUD-USER/api-user/src/main/java/com/example/apiuser/Modules/Addresses/Models/Dto/AddressRequestDTO.java
+/Users/luifer/Developer/MYS/CURSO-JAVA-REACT/CRUD-USER/api-user/src/main/java/com/example/apiuser/Modules/Addresses/Models/Dto/AddressResponseDTO.java
 /Users/luifer/Developer/MYS/CURSO-JAVA-REACT/CRUD-USER/api-user/src/main/java/com/example/apiuser/Modules/Users/Controllers/Docs/DocsCreateUser.java
 /Users/luifer/Developer/MYS/CURSO-JAVA-REACT/CRUD-USER/api-user/src/main/java/com/example/apiuser/Modules/Users/Controllers/Docs/DocsDeleteUser.java
 /Users/luifer/Developer/MYS/CURSO-JAVA-REACT/CRUD-USER/api-user/src/main/java/com/example/apiuser/Modules/Users/Controllers/Docs/DocsGetUserById.java

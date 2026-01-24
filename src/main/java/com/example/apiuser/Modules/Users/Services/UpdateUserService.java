@@ -11,12 +11,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.UUID;
 
+import com.example.apiuser.Modules.Users.Models.Dto.UserMapper;
+
 @Service
 @RequiredArgsConstructor
 public class UpdateUserService {
 
     private final UserRepository userRepository;
-    private final com.example.apiuser.Modules.Users.Models.Dto.UserMapper userMapper;
+    private final UserMapper userMapper;
 
     @Transactional
     public UserResponseDTO execute(UserRequestDTO request, UUID id) {
@@ -32,6 +34,15 @@ public class UpdateUserService {
 
         existingUser.setName(request.getName());
         existingUser.setEmail(request.getEmail());
+
+        if (request.getAddresses() != null) {
+            existingUser.getAddresses().clear();
+            var newAddresses = request.getAddresses().stream()
+                    .map(com.example.apiuser.Modules.Addresses.Models.Dto.AddressMapper.INSTANCE::toEntity)
+                    .toList();
+            newAddresses.forEach(address -> address.setUser(existingUser));
+            existingUser.getAddresses().addAll(newAddresses);
+        }
 
         User updatedUser = this.userRepository.save(existingUser);
         return userMapper.toDTO(updatedUser);

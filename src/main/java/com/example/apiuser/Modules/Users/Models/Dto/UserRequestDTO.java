@@ -9,6 +9,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import com.example.apiuser.Modules.Addresses.Models.Dto.AddressRequestDTO;
+import java.util.List;
 
 @Data
 @Builder
@@ -30,5 +32,5 @@ public class UserRequestDTO {
         @UniqueValue(entityClass = User.class, field = "email", message = "{user.email.already}", groups = ValidationGroups.OnCreate.class)
         private String email;
 
-
+        private List<AddressRequestDTO> addresses;
 }
